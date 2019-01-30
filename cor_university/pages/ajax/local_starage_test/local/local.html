@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Can Validate Input</h2>
+
+
+
+<input id="numb">
+<input id="my_name">
+<button type="button" onclick="myFunction()">Submit</button>
+<button type="button" onclick="delete_localstorage()">Delete</button>
+<button type="button" onclick="delete_help()">show_one</button>
+<p id="demo"></p>
+<p id="demo2"></p>
+<script>
+	var studentarray= [];
+
+
+
+
+function myFunction() {
+
+    
+  var  firstName = document.getElementById("numb").value;
+   var lastName = document.getElementById("my_name").value;
+ var studentogj={firstname:firstName,lastname:lastName};
+ studentarray.push(studentogj);
+
+ localStorage.studentRecord=JSON.stringify(studentarray);
+
+// console.log(studentarray);
+
+/*    if (!isNaN(x)) {
+        text = "Input not valid";
+    } else {
+        text = x;
+        text += y;
+    } */
+   // consol.log(studentarray);
+   // document.getElementById("demo").innerHTML = studentarray;
+
+    document.getElementById("numb").value='';
+    document.getElementById("my_name").value='';
+    init();
+}
+
+function init(){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			//document.getElementById("demo").innerHTML=f_name+' ';
+			//document.getElementById("demo").innerHTML =l_name+' ';
+			name_print.push(f_name);
+			name_print.push(l_name);
+			//alert('f_name');
+		}
+		document.getElementById("demo").innerHTML =name_print+' ';
+	}else{
+		document.getElementById("demo").innerHTML ='';
+	}
+}
+
+init();
+
+
+function delete_localstorage() {
+
+
+ localStorage.studentRecord='';
+
+  init();
+}
+
+
+
+//for help delete get valu from id numb
+function delete_help(){
+
+
+ var delete_name=document.getElementById("numb").value;
+
+  show_one(delete_name);
+}
+
+
+
+
+function show_one(delete_name){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			if(delete_name===studentarray[i].firstname){
+			
+			name_print.push(studentarray[i].firstname);
+			name_print.push(studentarray[i].lastname);
+			//alert('f_name');
+		}
+		
+	}
+	document.getElementById("demo").innerHTML =name_print;
+}
+}
+
+
+//update for
+
+function udate_help(){
+
+
+ var delete_name=document.getElementById("numb").value;
+var delete_name=document.getElementById("my_name").value;
+  show_one(delete_name);
+}
+
+
+
+
+function update_one(delete_name){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			if(delete_name===studentarray[i].firstname){
+			
+			name_print.push(studentarray[i].firstname);
+			name_print.push(studentarray[i].lastname);
+			//alert('f_name');
+		}
+		
+	}
+	document.getElementById("demo").innerHTML =name_print;
+}
+}
+</script>
+
+</body>
+</html> 

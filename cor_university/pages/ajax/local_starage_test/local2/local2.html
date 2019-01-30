@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Can Validate Input</h2>
+
+
+<div style="height: 200px;">
+	<select id="subject" multiple="multiple" style="height: 200px">
+		<option value="management">management</option>
+		<option value="accounting">accounting</option>
+		<option value="marketing">marketing</option>
+		<option value="bangla">bangla</option>
+		<option value="english">english</option>
+	</select>
+<input id="numb">
+<input id="my_name">
+<button type="button" onclick="myFunction()">Submit</button>
+<button type="button" onclick="delete_localstorage()">Delete</button>
+<button type="button" onclick="delete_help()">show_one</button>
+<p id="demo"></p>
+<p id="demo2"></p>
+</div>
+<script>
+	var studentarray= [];
+
+
+
+
+function myFunction() {
+
+    
+  var  mysubject = document.getElementById("subject").value;
+   
+ var subject_array={subject:mysubject};
+ studentarray.push(subject_array);
+// name of localStorage input data
+ localStorage.subject=JSON.stringify(studentarray);
+
+
+
+  //  document.getElementById("subject").value='';
+    
+    init();
+}
+
+function init(){
+
+	if(localStorage.subject){
+		studentarray=JSON.parse(localStorage.subject);
+		
+		var name_print= [];
+
+		name_print.push('<ol>');
+		for(var i=0;i<studentarray.length;i++){
+
+
+			var subject=studentarray[i].subject;
+			
+			
+			name_print.push('<li>'+subject);
+			name_print.push(l_name+'</li>');
+			//alert('f_name');
+		}
+		name_print.push('</ol>');
+		 document.getElementById("demo").innerHTML =name_print;
+		
+	}else{
+		document.getElementById("demo").innerHTML ='';
+	}
+}
+
+init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function delete_localstorage() {
+
+
+ localStorage.studentRecord='';
+
+  init();
+}
+
+
+
+//for help delete get valu from id numb
+function delete_help(){
+
+
+ var delete_name=document.getElementById("numb").value;
+
+  show_one(delete_name);
+}
+
+
+
+
+function show_one(delete_name){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			if(delete_name===studentarray[i].firstname){
+			
+			name_print.push(studentarray[i].firstname);
+			name_print.push(studentarray[i].lastname);
+			//alert('f_name');
+		}
+		
+	}
+	document.getElementById("demo").innerHTML =name_print;
+}
+}
+
+
+//update for
+
+function udate_help(){
+
+
+ var delete_name=document.getElementById("numb").value;
+var delete_name=document.getElementById("my_name").value;
+  show_one(delete_name);
+}
+
+
+
+
+function update_one(delete_name){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			if(delete_name===studentarray[i].firstname){
+			
+			name_print.push(studentarray[i].firstname);
+			name_print.push(studentarray[i].lastname);
+			//alert('f_name');
+		}
+		
+	}
+	document.getElementById("demo").innerHTML =name_print;
+}
+}
+</script>
+
+</body>
+</html> 

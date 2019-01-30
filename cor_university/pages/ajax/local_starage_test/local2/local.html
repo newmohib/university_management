@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Can Validate Input</h2>
+
+
+<div style="height: 200px;">
+	<select id="subject" multiple="multiple">
+		<option value="management">management</option>
+		<option value="accounting">accounting</option>
+		<option value="marketing">marketing</option>
+		<option value="bangla">bangla</option>
+		<option value="english">english</option>
+	</select>
+
+<input id="my_name">
+<button type="button" onclick="remove_subject()">Remove one</button>
+<button type="button" onclick="myFunction()">Submit</button>
+<button type="button" onclick="delete_localstorage()">Delete</button>
+<button type="button" onclick="delete_help()">show_one</button>
+<p id="demo"></p>
+<p id="demo2"></p>
+</div>
+<script>
+	var subjectarray= [];
+
+
+
+
+function myFunction() {
+
+    
+  var  my_subject = document.getElementById("subject").value;
+   
+ var subject_all={subject:my_subject};
+ subjectarray.push(subject_all);
+
+ localStorage.subjectRecord=JSON.stringify(subjectarray);
+
+
+
+    document.getElementById("subject").value='';
+    init();
+}
+
+function init(){
+
+	if(localStorage.subjectRecord){
+		subjectarray=JSON.parse(localStorage.subjectRecord);
+		
+		var name_print= [];
+
+		name_print.push('<select multiple="multiple" id="select_subject">');
+		for(var i=0;i<subjectarray.length;i++){
+
+
+			var subject_show=subjectarray[i].subject;
+			
+			
+			name_print.push('<option>'+subject_show);
+			name_print.push('</option>');
+			//alert('f_name');
+		}
+		name_print.push('</select>');
+		 document.getElementById("demo").innerHTML =name_print;
+		
+	}else{
+		document.getElementById("demo").innerHTML ='';
+	}
+}
+
+init();
+
+
+
+
+function remove_subject() {
+subjectRecord.localStorage.clear();
+    
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function delete_localstorage() {
+
+
+ localStorage.studentRecord='';
+
+  init();
+}
+
+
+
+//for help delete get valu from id numb
+function delete_help(){
+
+
+ var delete_name=document.getElementById("numb").value;
+
+  show_one(delete_name);
+}
+
+
+
+
+function show_one(delete_name){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			if(delete_name===studentarray[i].firstname){
+			
+			name_print.push(studentarray[i].firstname);
+			name_print.push(studentarray[i].lastname);
+			//alert('f_name');
+		}
+		
+	}
+	document.getElementById("demo").innerHTML =name_print;
+}
+}
+
+
+//update for
+
+function udate_help(){
+
+
+ var delete_name=document.getElementById("numb").value;
+var delete_name=document.getElementById("my_name").value;
+  show_one(delete_name);
+}
+
+
+
+
+function update_one(delete_name){
+
+	if(localStorage.studentRecord){
+		studentarray=JSON.parse(localStorage.studentRecord);
+		//console.log('stud',studentarray);
+		var name_print= [];
+		for(var i=0;i<studentarray.length;i++){
+			var f_name=studentarray[i].firstname;
+			var l_name=studentarray[i].lastname;
+			if(delete_name===studentarray[i].firstname){
+			
+			name_print.push(studentarray[i].firstname);
+			name_print.push(studentarray[i].lastname);
+			//alert('f_name');
+		}
+		
+	}
+	document.getElementById("demo").innerHTML =name_print;
+}
+}
+</script>
+
+</body>
+</html> 

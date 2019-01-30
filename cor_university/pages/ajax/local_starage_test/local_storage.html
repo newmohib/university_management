@@ -1,0 +1,33 @@
+<script>
+	
+//localStorage.setItem('favoriteflavor','vanilla');
+//var taste = localStorage.getItem('favoriteflavor');
+//alert(taste);
+//document.write(taste);
+//document.write(localStorage.getItem('favoriteflavor'));
+
+
+//localStorage.removeItem('favoriteflavor');
+//var taste = localStorage.getItem('favoriteflavor');
+
+
+
+
+
+var car = {};
+car.wheels = 4;
+car.doors = 2;
+car.sound = 'vroom';
+car.name = 'Lightning McQueen';
+//document.write(car.wheels);
+localStorage.setItem( 'car');
+
+              var html="";				 
+				 forEach(localStorage.getItem( 'car' ) ){
+					 
+					 html+=car.wheels+" | "+car.sound+"<br/>";
+					 
+			     });
+document.write(html);
+
+</script>

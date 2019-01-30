@@ -1,0 +1,38 @@
+input[type="text"] {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 19px;
+  font-family: Roboto;
+}
+
+input[type="button"] {
+  background: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 19px;
+  font-family: Roboto;
+  transition: all ease 0.250s;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background: #000;
+  color: #fff;
+}
+
+body {
+  margin-top: 20px;
+  text-align: center;
+  font-family: Roboto;
+}
+
+.controls {
+  background: #eaeaea;
+  padding: 30px;
+  display: inline-block;
+}
+
+h1 {
+  font-size: 30px;
+}
